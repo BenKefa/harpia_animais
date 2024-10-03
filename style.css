@@ -1,0 +1,29 @@
+/* Classe para estilizar o botão do dropdown */
+.custom-dropdown-button .dropdown-toggle {
+    background-color: #24242c !important; /* Cor de fundo preta */
+    color: white !important; /* Cor do texto branco */
+    font-size: 15px !important; /* Tamanho da fonte */
+    border: none; /* Remover borda se desejado */
+}
+
+/* Classe para estilizar os itens do dropdown */
+.custom-dropdown-button .dropdown-menu a {
+    background-color: #24242c !important; /* Cor de fundo preta */
+    color: white !important; /* Cor do texto branco */
+    font-size: 15px !important; /* Tamanho da fonte */
+}
+
+/* Classe para estilizar os itens do dropdown em hover */
+.custom-dropdown-button .dropdown-menu a:hover {
+    background-color: #24242c !important; /* Cor de fundo branca */
+    color: white !important; /* Cor do texto preto */
+    font-size: 15px !important; /* Tamanho da fonte */
+}
+
+@media (max-width: 767.98px) {
+    .custom-navbar {
+        height: 70px; /* Altura para telas menores, como celulares */
+        background-color: rgb(25, 25, 25);
+        background-color: rgb(255, 255, 255);
+    }
+}
