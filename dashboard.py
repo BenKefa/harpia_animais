@@ -12,10 +12,10 @@ from datetime import date
 load_figure_template('bootstrap')
 # ===== Criar o Layout do sistema - Aqui são configurados os espaços e imagens do aplicativo ===== #
 layout = html.Div(children=[
-    dcc.Interval(id='atualizacao_automatica', interval=300000, n_intervals=0), # Atualização a cada 30 segundos
+    dcc.Interval(id='atualizacao_automatica', interval=300000, n_intervals=0), # Atualização automárica dos gráficos a cada 5 minutos
     
 
-# Modal onde ficam os filtros do dashboard
+# Linha com botões de filtros e cadastros
     dbc.Row([
         dbc.Card([
             dbc.Navbar([
@@ -32,6 +32,7 @@ layout = html.Div(children=[
             sticky='down',
             ),
         ]),
+        # Modal onde ficam os filtros do dashboard
         dbc.Modal([
             dbc.ModalHeader(
                 dbc.ModalTitle('Filtros')),
@@ -153,7 +154,6 @@ layout = html.Div(children=[
         # == Dashboard == #  
         # == Criar um Card com uma linha, contendo informações (não gráficos) == #
             dbc.Card([
-            # == Criar uma linha com os gráficos sobre o Kwid ==
                 dcc.Loading(id='loading_dashboard', type = 'circle', fullscreen=True, style={'backgroundColor': 'rgba(0,0,0,0)'},
                     children=dbc.Row([
                         dbc.Row([
@@ -162,8 +162,6 @@ layout = html.Div(children=[
                                     html.H5('Ocorrencias relatadas', style={'textAlign': 'center','font-size': 'medium'}),
                                     html.H5(id='fig_ocorrencias_relatadas', style={'textAlign': 'center','font-size': 'small'}),
                                 ], style={'margin': '3px', 
-                                            #'width': '600px',  # Define a largura do card
-                                            #'height': '90px', # Define a altura do card
                                             'backgroundColor': '#FF6347'}),
                             ],md=4),
                             dbc.Col([
@@ -171,8 +169,6 @@ layout = html.Div(children=[
                                     html.H5('Ocorrencias resolvidas', style={'textAlign': 'center','font-size': 'medium'}),
                                     html.H5(id='fig_ocorrencias_resolvidas', style={'textAlign': 'center','font-size': 'small'}),
                                 ], style={'margin': '3px', 
-                                            #'width': '600px',  # Define a largura do card
-                                            #'height': '90px', # Define a altura do card
                                             'backgroundColor': '#4682B4'}),
                             ],md=4),
                             dbc.Col([
@@ -180,8 +176,6 @@ layout = html.Div(children=[
                                     html.H5('Ocorrencias pendentes', style={'textAlign': 'center','font-size': 'medium'}),
                                     html.H5(id='fig_ocorrencias_pendentes', style={'textAlign': 'center','font-size': 'small'}),
                                 ], style={'margin': '3px', 
-                                            #'width': '600px',  # Define a largura do card
-                                            #'height': '90px', # Define a altura do card
                                             'backgroundColor': '#66CDAA'}),
                             ],md=4),
                             
