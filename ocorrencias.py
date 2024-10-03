@@ -10,15 +10,12 @@ import datetime
 from datetime import date
 
 load_figure_template('bootstrap')
-# ===== Criar o Layout do sistema - Aqui são configurados os espaços e imagens do aplicativo ===== #
 layout = html.Div(children=[
     
 
-# Modal onde ficam os filtros do dashboard
+# Está página é apenas para o lançamento de ocorrencias
     dbc.Row([
-        # == Criar um Card com uma linha, contendo informações (não gráficos) == #
             dbc.Card([
-            # == Criar uma linha com os gráficos sobre o Kwid ==
                 dcc.Loading(id='loading_dashboard', type = 'circle', fullscreen=True, style={'backgroundColor': 'rgba(0,0,0,0)'},
                     children=dbc.Row([
                         dbc.Row([
