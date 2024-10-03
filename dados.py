@@ -36,35 +36,23 @@ def formatar_cpf(numero):
     return cpf_formatado
 
 # ===== Carregar o token do Mapbox para geração do Gráfio de Mapa ===== #
-mapbox_token = 'pk.eyJ1IjoiYmVua2VmYSIsImEiOiJjbGRmemt5NjUwaXRlM3ZzMnRvbmV1NDRrIn0.OJ2myrAkytpmthW9QG4mig'
+# Para ter acesso aos mapas, é necessário criar um Token na ferramenta Mapbox. Use esse link para criar o seu token: https://docs.mapbox.com/help/getting-started/access-tokens/
+mapbox_token = '-----'
 
 # ===== Conexão Local ===== #
 engine = sa.create_engine('mysql+mysqldb://root:root@localhost/harpia_animais')
 
 # ===== Criar os dataframes ===== #
-def dados(engine, data_ini=None, data_fin=None, pessoa=None):
+# A biblioteca sqlalchemy utiliza o parâmetro "engine" para conectar ao banco de dados e executar as consultas SQL. 
+# Deixamos os parâtros "params" em branco, para que as consultas estejam abertas para os filtros no arquivo index.py.
+# Fazemos todas as consultas e mepeamos os códigos dos IDs de cada tabela, para que quando um novo item for cadastrado, a aplicação 
+# consiga identificar e concluir a operação. Sem o map, não é possível cadastrar novos itens. 
+# Por fim, retora os dataframes com a função dados.
+def dados(engine):
     query = 'SELECT * FROM ocorrencia'
     params = []
-    
-    #if data_ini and data_fin:
-    #    query += ' WHERE dataocorrencia BETWEEN %s AND %s'
-    #    params.extend([data_ini, data_fin])
-    #elif data_ini:
-    #    query += ' WHERE dataocorrencia >= %s'
-    #    params.append(data_ini)
-    #elif data_fin:
-    #    query += ' WHERE dataocorrencia <= %s'
-    #    params.append(data_fin)
-    #
-    #if pessoa:
-    #    if 'WHERE' in query:
-    #        query += ' AND nome_cli = %s'
-    #    else:
-    #        query += ' WHERE nome_cli = %s'
-    #    params.append(pessoa)
 
     ocorrencia = pd.read_sql_query(query, engine, params=params)
-    #codigo_ocorrencia_map = dict(zip(ocorrencia['nomeocorrencia'], ocorrencia['idocorrencia']))
     
     cidade = pd.read_sql_query('SELECT * from cidade', engine)
     codigo_cidade_map = dict(zip(cidade['nomecidade'], cidade['idcidade']))
@@ -112,21 +100,6 @@ def dados(engine, data_ini=None, data_fin=None, pessoa=None):
     
     ocorrencia = pd.merge(ocorrencia, mesocorrencia, on = 'mesocorrencia', how='left')
     ocorrencia = pd.merge(ocorrencia, mesresolucao, on = 'messolucao', how='left')
-    
-    
-
-    #ocorrencia['dataocorrencia_formatado'] = ocorrencia['dataocorrencia']
-    #ocorrencia['dataresolucao_formatado'] = ocorrencia['dataresolucao']
-    #for campo in ['dataocorrencia_formatado', 'dataresolucao_formatado']:
-    #    ocorrencia[campo]=ocorrencia[campo].map(formatar_data)
-    
-    #ocorrencia['nome_ocorrencia_completo'] = ocorrencia.apply(lambda row: f"{row['idocorrencia']} - {row['nomeocorrencia']}", axis=1)
-
-    #codigo_conta_map=dict(zip(ocorrencia['nome_ocorrencia_completo'], ocorrencia['idocorrencia']))
-    
-    #colunas_organizadas = ['nome_ocorrencia_completo']
-    
-    #ocorrencia = ocorrencia.reindex(columns=colunas_organizadas)
     
        
     return ocorrencia, cidade, codigo_cidade_map, bairro, codigo_bairro_map, gruposituacao, codigo_gruposituacao_map, situacaoanimal, codigo_situacao_map, grupoanimal, codigo_grupoanimal_map, racaanimal, codigo_raca_animal_map
