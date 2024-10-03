@@ -17,12 +17,9 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, 'https://cdnjs.cloud
 
 server=app.server
 
+# Barra de nevegação
 navbar = dbc.NavbarSimple(
-    children=[
-        
-    ],
     brand=html.Img(src='/assets/logo.png', height="40px"),
-    #brand_href="/",
     color='dark',
     dark=True,
     fluid=True,  
@@ -144,18 +141,14 @@ def formatar_cpf(numero):
 
 # Salvar e interagir com banco de dados 
 
-# Função para atualizar os mapeamentos após uma inserção
-def atualizar_mapeamentos(engine):
-    return dados(engine)
-
 # Função para atualização dos dados globais
 def atualizar_dados_globais():
     global ocorrencia, cidade, codigo_cidade_map, bairro, codigo_bairro_map, gruposituacao, codigo_gruposituacao_map, situacaoanimal, codigo_situacao_map, grupoanimal, codigo_grupoanimal_map, racaanimal, codigo_raca_animal_map
     ocorrencia, cidade, codigo_cidade_map, bairro, codigo_bairro_map, gruposituacao, codigo_gruposituacao_map, situacaoanimal, codigo_situacao_map, grupoanimal, codigo_grupoanimal_map, racaanimal, codigo_raca_animal_map = dados(engine)
     
-#### ---- PÁGINA DE CONTROLE DE ocorrencias ---- ###
+#### ---- PÁGINA DE CONTROLE DE OCORRENCIAS ---- ###
 
-# Lançamento de Ocorrência - Cadastrar nova conta
+# Lançamento de Ocorrência - Cadastrar nova ocorrencia
 @app.callback(
     [Output('mensagem_ocorrencia_salvo', 'children'),
      Output('data_lancamento_ocorrencia', 'date'),
@@ -283,7 +276,7 @@ def salvar_situacao(n_clicks, idgruposituacao, nomesituacaoanimal):
         
     return ('', '', '')
 
-# ----------- Atualizar novos cadastros ----------- #
+# ----------- Atualizar os dropdowns conforme novos cadastros são lançados ----------- #
 @app.callback(
     Output('dropdown_nomebairro_lancamento_ocorrencia', 'options'),
     Output('dropdown_nomegrupoanimal_lancamento_ocorrencia', 'options'),
@@ -313,7 +306,7 @@ def atualizar_dropdowns(n_intervals, n1, n2, n3, n4):
     return dropdown_nomebairro_lancamento_ocorrencia, dropdown_nomegrupoanimal_lancamento_ocorrencia, dropdown_nomeracaanimal_lancamento_ocorrencia, dropdown_nomesituacaoanimal_lancamento_ocorrencia, dropdown_nomegrupoanimal_cadastro_raca, dropdown_nomegruposituacao_cadastro_situacao
 
 
-# Atualizaçao dos gráficos de vendas
+# Atualizaçao dos gráficos
 @app.callback([
     Output('fig_ocorrencias_relatadas', 'children'),
     Output('fig_ocorrencias_resolvidas', 'children'),   
