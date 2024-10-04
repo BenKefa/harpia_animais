@@ -187,7 +187,7 @@ if __name__=='__main__':
 
 
 * **Lucas Rosa Pinto** - [desenvolvedor](https://github.com/BenKefa)
-* **Abraão Rogério da Costa Farias** - [desenvolvedor]
+* **Abraão Rogério da Costa Farias** - [desenvolvedor](http://github.com/abraao77)
 
 ## 📄 Licença
 
