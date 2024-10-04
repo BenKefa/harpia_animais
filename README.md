@@ -173,10 +173,12 @@ Arquivo Python com nome "dados.py"
 Arquivo Python com nome "dashboard.py" 
 Arquivo Python com nome "ocorrencias.py" 
 ```
-Para executar o aplicativo, basta executar o arquivo "index.py" via terminal. 
+Para executar o aplicativo, basta executar o arquivo "index.py" via terminal no servidor. 
 
 Nas linhas de código abaixo, é possível definir no host, se o app poderá ser acesso por todos os terminais da rede (host='0.0.0.0'), ou apenas pelo servidor (host='127.0.0.1').
 Se o parâmetro debug for = True, a aplicação web mostrará em tempo real se existem falhas conforme os códigos são salvos. Se estiver como False, esse debug não acontecerá. 
+
+O acesso web pode ser feito via navegador, informando o IP do servidor e a porta de acesso. Por exemplo, 10.1.1.2:8052 para acesso administrativo e 10.1.1.2:8052/ocorrencias para o acesso ao usuário final, cuja única função é relatar as ocorrências. 
 
 if __name__=='__main__':
     app.run_server(host='0.0.0.0', port=8052, debug=True)    
