@@ -38,7 +38,7 @@ layout = html.Div(children=[
                 dbc.ModalTitle('Filtros')),
             dbc.ModalBody(
                 dbc.Row([
-                    html.H5('Data de vencimento:', style={'textAlign': 'center'}),
+                    html.H5('Data de ocorrência:', style={'textAlign': 'center'}),
                             html.Div([
                                 dcc.DatePickerRange(id='filtro_data', start_date_placeholder_text='Data Início', end_date_placeholder_text='Data Fim',persistence=True, display_format='DD/MM/YYYY'),
                             ]),
