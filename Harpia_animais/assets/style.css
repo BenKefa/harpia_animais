@@ -1,0 +1,49 @@
+/* Classe para estilizar o botão do dropdown */
+.custom-dropdown-button .dropdown-toggle {
+    background-color: #000000 !important; /* Cor de fundo preta */
+    color: grey !important; /* Cor do texto branco */
+    font-size: 15px !important; /* Tamanho da fonte */
+    border: none; /* Remover borda se desejado */
+}
+
+/* Classe para estilizar o botão do dropdown em hover */
+.custom-dropdown-button .dropdown-toggle:hover {
+    background-color: #333333 !important; /* Cor de fundo cinza escuro */
+    color: white !important; /* Cor do texto branco */
+}
+
+/* Classe para estilizar o botão do dropdown em estado ativo */
+.custom-dropdown-button .dropdown-toggle:active {
+    background-color: #333333 !important; /* Cor de fundo cinza escuro */
+    color: white !important; /* Cor do texto branco */
+}
+
+/* Classe para estilizar os itens do dropdown */
+.custom-dropdown-button .dropdown-menu a {
+    background-color: #24242c !important; /* Cor de fundo preta */
+    color: grey !important; /* Cor do texto branco */
+    font-size: 15px !important; /* Tamanho da fonte */
+}
+
+/* Classe para estilizar os itens do dropdown em hover */
+.custom-dropdown-button .dropdown-menu a:hover {
+    background-color: #24242c !important; /* Cor de fundo preta */
+    color: grey !important; /* Cor do texto branco */
+    font-size: 15px !important; /* Tamanho da fonte */
+}
+
+
+
+/* Classe para estilizar o botão dbc.Button */
+.custom-dbc-button {
+    background-color: #000000; /* Cor de fundo preta */
+    color: white; /* Cor do texto branco */
+    font-size: 15px; /* Tamanho da fonte */
+    border: none; /* Remover borda se desejado */
+}
+
+/* Classe para estilizar o botão dbc.Button em hover */
+.custom-dbc-button:hover {
+    background-color: #333333; /* Cor de fundo cinza escuro */
+    color: white; /* Cor do texto branco */
+}
